@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Rohan &amp; Vyoma | Royal Wedding Celebration</title>
+<meta name="description" content="Join the wedding celebrations of C Rohan Nair &amp; Vyoma Mehta. Grand Reception on 30 January 2027 at K-Hills, Calicut.">
+<meta name="theme-color" content="#F7F0E5">
+<!-- Replace SITE_URL with your deployed https URL (absolute URLs are required for WhatsApp previews) -->
+<link rel="canonical" href="https://SITE_URL/">
+<meta property="og:type" content="website"><meta property="og:url" content="https://SITE_URL/">
+<meta property="og:title" content="Rohan &amp; Vyoma | Royal Wedding Celebration">
+<meta property="og:description" content="Join the wedding celebrations of C Rohan Nair &amp; Vyoma Mehta. Grand Reception on 30 January 2027 at K-Hills, Calicut.">
+<meta property="og:image" content="https://SITE_URL/assets/og-image.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Rohan &amp; Vyoma | Royal Wedding Celebration">
+<meta name="twitter:description" content="Join the wedding celebrations of C Rohan Nair &amp; Vyoma Mehta. Grand Reception on 30 January 2027 at K-Hills, Calicut.">
+<meta name="twitter:image" content="https://SITE_URL/assets/og-image.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=EB+Garamond:wght@400;500&family=Great+Vibes&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="assets/opening-poster.webp">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="lock">
+<header class="stage" aria-label="Rohan and Vyoma"><div class="frame">
+  <img src="assets/hero-video-end.webp" alt="Palace doors opened to the R and V monogram" fetchpriority="high">
+  <div class="veil"></div>
+  <div class="herotxt fs">
+    <p class="head gold sm" style="margin:0;letter-spacing:.2em;font-size:clamp(10px,2.6cqw,13px)" data-k="kicker"></p>
+    <div class="rule" aria-hidden="true">❖</div>
+    <h1 class="hero-h"><span class="script n" data-k="groom"></span><span class="script gold amp">&amp;</span><span class="script n" data-k="bride"></span></h1>
+    <div class="rule" aria-hidden="true">❖</div>
+    <div id="heroLines"></div>
+    <a href="#announcement" class="gold sm head" style="display:inline-block;margin-top:.4em;text-decoration:none">Scroll ⌄</a>
+  </div>
+</div></header>
+
+<div class="intro" id="intro"><div class="frame">
+  <img src="assets/opening-poster.webp" alt="">
+  <video id="vid" src="assets/opening.mp4" poster="assets/opening-poster.webp" muted playsinline preload="auto"></video>
+  <div id="openBox" style="position:absolute;left:0;right:0;bottom:9%;text-align:center">
+    <p class="script" style="margin:0 0 .5em;font-size:clamp(30px,10cqw,48px)">Rohan &amp; Vyoma</p>
+    <button class="btn solid" id="openBtn">Open Invitation</button></div>
+  <button class="skip" id="skip">Skip Intro</button>
+</div></div>
+<div class="petals" id="petals" aria-hidden="true"></div>
+
+<main>
+<div class="band"><section id="announcement" class="panel" aria-label="Wedding announcement" style="--bg:url(assets/wedding-announcement.webp);--pad:90cqw 18cqw 8cqw;--veil:linear-gradient(to top,rgba(247,240,229,.95) 0%,rgba(247,240,229,.9) 45%,rgba(247,240,229,0) 60%)"><div class="in fs reveal">
+  <p class="head" style="margin:0;font-size:clamp(15px,4.4cqw,22px)" data-k="host"></p>
+  <p style="margin:.4em 0" data-k="pre"></p>
+  <p class="head" style="margin:0;font-size:clamp(16px,4.8cqw,24px)" data-k="aGroom"></p>
+  <p class="script gold" style="margin:0;font-size:1.5em">with</p>
+  <p class="head" style="margin:0;font-size:clamp(16px,4.8cqw,24px)" data-k="aBride"></p>
+  <div class="rule" aria-hidden="true">❖</div>
+  <p style="margin:0"><b data-k="aDate"></b><br><span data-k="aPlace"></span></p>
+  <p style="margin:.6em 0 0" data-k="post"></p></div></section></div>
+
+<div class="band"><section id="programme" class="panel" aria-label="Four-day programme" style="--bg:url(assets/programme-bg.webp);--h:2200;--pad:38cqw 14cqw 30cqw"><div class="in fs reveal">
+  <h2 class="head" style="margin:0;font-size:clamp(16px,4.6cqw,24px);line-height:1.3">Four Days of Celebration</h2>
+  <div class="rule" aria-hidden="true">❖</div>
+  <div class="tabs" role="tablist" aria-label="Choose a day" id="tabs"></div>
+  <div id="tabpanel" role="tabpanel" style="margin-top:1em"></div></div></section></div>
+
+<div class="band"><section id="reception" class="panel" aria-label="Wedding reception" style="--bg:url(assets/reception-bg.webp);--h:2200;--pad:58cqw 22cqw 0"><div class="in fs reveal">
+  <p class="head gold sm" style="margin:0;letter-spacing:.12em">The Grand Celebration</p>
+  <h2 class="script" style="margin:.1em 0;font-weight:400;font-size:clamp(30px,8.4cqw,46px);line-height:1">Wedding Reception</h2>
+  <div class="rule" aria-hidden="true">❖</div>
+  <p class="script" style="margin:0;font-size:clamp(20px,5.2cqw,28px);line-height:1.1">C Rohan Nair <span class="gold">&amp;</span><br>Vyoma Mehta</p>
+  <div class="rule" aria-hidden="true">❖</div>
+  <p style="margin:0"><b>Saturday, 30 January 2027</b><br>6:00 PM onwards<br><span class="head" style="letter-spacing:.1em">K-Hills, Calicut</span></p>
+  <div class="cta"><a class="btn solid" id="dirBtn" target="_blank" rel="noopener noreferrer">Get Directions</a><button class="btn" id="calBtn">Add to Calendar</button></div></div></section></div>
+
+<div class="band"><section id="guest" class="panel" aria-label="Guest information" style="--bg:url(assets/guest-info-bg.webp);--pad:44cqw 15cqw 0"><div class="in fs reveal">
+  <h2 class="head" style="margin:0;font-size:clamp(16px,4.6cqw,24px)">Your Stay &amp; Celebration</h2>
+  <div class="rule" aria-hidden="true">❖</div>
+  <div style="margin-bottom:1.2em"><p class="head gold sm" style="margin:0">Accommodation</p><p class="head" style="margin:.2em 0 .6em;font-size:clamp(16px,4.6cqw,22px)">Hotel Tiara, Calicut</p><a class="btn" id="stayBtn" target="_blank" rel="noopener noreferrer">Navigate</a></div>
+  <div class="rule" aria-hidden="true">❖</div>
+  <div><p class="head gold sm" style="margin:0">Reception</p><p class="head" style="margin:.2em 0 .6em;font-size:clamp(16px,4.6cqw,22px)">K-Hills, Calicut</p><a class="btn" id="recBtn" target="_blank" rel="noopener noreferrer">Navigate</a></div></div></section></div>
+
+<div class="band"><section id="blessings" class="panel" aria-label="Family blessings" style="--bg:url(assets/closing-bg.webp);--h:2100;--pad:49cqw 13cqw 0"><div class="in fs reveal">
+  <h2 class="head" style="margin:0;font-size:clamp(16px,4.6cqw,24px)">With Love &amp; Blessings</h2>
+  <div class="rule" aria-hidden="true">❖</div>
+  <div id="family" style="display:grid;grid-template-columns:1fr 1fr;gap:.7em .6em;align-items:start"></div>
+  <p style="font-style:italic;margin:.9em 0 .7em;font-size:clamp(13px,3.5cqw,16px)">“Your presence and blessings will make this occasion truly memorable.”</p>
+  <div class="mono script" aria-label="R and V monogram">R&amp;V</div></div></section></div>
+</main>
+<audio id="audio" loop preload="none"></audio>
+<button class="music" id="music" hidden aria-label="Mute music" aria-pressed="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 18V5l11-2v13"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="17.5" cy="16" r="2.5"/><path id="slash" d="M3 21 21 3" hidden/></svg></button>
+<script src="script.js"></script>
+</body></html>
