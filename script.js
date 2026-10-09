@@ -43,7 +43,22 @@ function showDay(i) {
   }, reduce ? 0 : 200);
 }
 tp.style.transition = 'opacity .35s';
-tabs.addEventListener('click', (e) => { const b = e.target.closest('.tab'); if (b) showDay([...tabs.children].indexOf(b)); });
+tabs.addEventListener('click', (e) => { 
+  const b = e.target.closest('.tab'); 
+  if (b) {
+    // Haptic feedback for mobile devices
+    if ('vibrate' in navigator) {
+      navigator.vibrate(10); // Short vibration pulse
+    }
+    
+    // Click animation - pulse effect
+    b.classList.remove('click-animate');
+    void b.offsetWidth; // Force reflow to restart animation
+    b.classList.add('click-animate');
+    setTimeout(() => b.classList.remove('click-animate'), 400);
+    showDay([...tabs.children].indexOf(b));
+  }
+});
 showDay(0);
 
 /* ----- calendar (.ics) ----- */
