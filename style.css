@@ -49,7 +49,7 @@ button{font-family:inherit;cursor:pointer}
 .tab.click-animate{animation:tabClick .4s ease-out}
 @keyframes tabClick{0%{transform:scale(1);background:var(--gold);color:var(--ivory);border-color:var(--gold)}25%{transform:scale(.92);box-shadow:0 0 0 0 rgba(176,139,82,.7)}50%{transform:scale(1.08);box-shadow:0 0 0 8px rgba(176,139,82,0)}75%{transform:scale(.96)}100%{transform:scale(1)}}
 .tl{list-style:none;margin:0;padding:0;text-align:left}
-.tl li{padding:.3em 0;line-height:1.35;font-size:clamp(14px,3.6cqw,17px);border-bottom:1px solid rgba(176,139,82,.45)}
+.tl li{padding:.3em 0;line-height:1.35;font-size:clamp(14px,3.6cqw,17px);border-bottom:1px solid rgba(176,139,82,.45);color:rgba(113,51,59,.95)}
 .tl li:last-child{border-bottom:0}
 .tl .t{display:block;font-family:'Cormorant Garamond',serif;font-weight:700;color:var(--gold);letter-spacing:.08em;font-size:clamp(12px,3.1cqw,14px);text-transform:uppercase}
 
@@ -68,6 +68,10 @@ button{font-family:inherit;cursor:pointer}
 body.ready .herotxt{opacity:1;transform:none}
 .hero-h{margin:0;font-weight:400;line-height:1}.hero-h span{display:block}
 .n{font-size:clamp(34px,10.5cqw,64px)}.amp{font-size:clamp(22px,6.5cqw,34px)}
+.scroll-cta{position:relative;padding:.5em 1.2em;background:rgba(113,51,59,.85);color:var(--ivory)!important;border-radius:4px;box-shadow:0 2px 8px rgba(113,51,59,.4);transition:all .3s;font-size:clamp(12px,3cqw,14px)!important;letter-spacing:.16em!important}
+.scroll-cta:hover{background:var(--burg);box-shadow:0 4px 12px rgba(113,51,59,.5);transform:translateY(-2px)}
+.scroll-cta::after{content:'';position:absolute;bottom:-14px;left:50%;transform:translateX(-50%);width:0;height:0;border-left:8px solid transparent;border-right:8px solid transparent;border-top:10px solid rgba(113,51,59,.85);animation:arrowBounce 1.5s ease-in-out infinite}
+@keyframes arrowBounce{0%,100%{transform:translateX(-50%) translateY(0);opacity:1}50%{transform:translateX(-50%) translateY(6px);opacity:.6}}
 .music[hidden],.petals:empty{display:none}
 .mono{opacity:0;transform:scale(.9);transition:1.4s}.mono.on{opacity:1;transform:none}
 .cta{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:1em -6cqw 0}

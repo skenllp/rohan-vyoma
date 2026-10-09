@@ -31,14 +31,14 @@ $('#dirBtn').href = $('#recBtn').href = CFG.maps.reception; $('#stayBtn').href =
 
 /* ----- programme tabs ----- */
 const tabs = $('#tabs'), tp = $('#tabpanel');
-tabs.innerHTML = CFG.days.map((d, i) => `<button role="tab" id="tab${i}" class="tab head" aria-controls="tabpanel" style="letter-spacing:.06em;font-size:clamp(12px,3.2cqw,15px)">${d.tab}<br><span style="font-weight:500;text-transform:none;letter-spacing:0">${d.date}</span></button>`).join('');
+tabs.innerHTML = CFG.days.map((d, i) => `<button role="tab" id="tab${i}" class="tab head" aria-controls="tabpanel" style="letter-spacing:.06em;font-size:clamp(12px,3.2cqw,15px)">${d.tab}<br><span style="font-weight:600;text-transform:none;letter-spacing:0;color:var(--burg);opacity:.95">${d.date}</span></button>`).join('');
 function showDay(i) {
   const d = CFG.days[i];
   tabs.querySelectorAll('.tab').forEach((b, k) => b.setAttribute('aria-selected', k === i));
   tp.setAttribute('aria-labelledby', 'tab' + i);
   tp.style.opacity = 0;
   setTimeout(() => {
-    tp.innerHTML = `<h3 class="head" style="margin:0 0 .3em;font-size:clamp(14px,3.8cqw,18px);letter-spacing:.1em">${d.title}</h3><ul class="tl">${d.items.map(([t, e]) => `<li>${t ? `<span class="t">${t}</span>` : ''}${esc(e)}</li>`).join('')}</ul>`;
+    tp.innerHTML = `<div style="background:rgba(247,240,229,.92);padding:1.2em 1em;border-radius:4px;box-shadow:0 2px 8px rgba(113,51,59,.15)"><h3 class="head" style="margin:0 0 .5em;font-size:clamp(14px,3.8cqw,18px);letter-spacing:.1em;color:var(--burg)">${d.title}</h3><ul class="tl">${d.items.map(([t, e]) => `<li>${t ? `<span class="t">${t}</span>` : ''}${esc(e)}</li>`).join('')}</ul></div>`;
     tp.style.opacity = 1;
   }, reduce ? 0 : 200);
 }
