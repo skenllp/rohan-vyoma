@@ -29,37 +29,33 @@ $('#heroLines').innerHTML = CFG.hero.map(([d, e]) => `<p style="margin:.1em 0;li
 $('#family').innerHTML = CFG.family.map((g) => `<p style="margin:0;line-height:1.3;font-size:clamp(13px,3.3cqw,16px)">${g.map((n) => `<span style="display:block">${esc(n)}</span>`).join('')}</p>`).join('');
 $('#dirBtn').href = $('#recBtn').href = CFG.maps.reception; $('#stayBtn').href = CFG.maps.stay;
 
-/* ----- programme tabs ----- */
-const tabs = $('#tabs'), tp = $('#tabpanel');
-tabs.innerHTML = CFG.days.map((d, i) => `<button role="tab" id="tab${i}" class="tab head" aria-controls="tabpanel" style="letter-spacing:.06em;font-size:clamp(12px,3.2cqw,15px)">${d.tab}<br><span style="font-weight:600;text-transform:none;letter-spacing:0;color:var(--burg);opacity:.95">${d.date}</span></button>`).join('');
-function showDay(i) {
-  const d = CFG.days[i];
-  tabs.querySelectorAll('.tab').forEach((b, k) => b.setAttribute('aria-selected', k === i));
-  tp.setAttribute('aria-labelledby', 'tab' + i);
-  tp.style.opacity = 0;
-  setTimeout(() => {
-    tp.innerHTML = `<div style="background:rgba(247,240,229,.92);padding:1.2em 1em;border-radius:4px;box-shadow:0 2px 8px rgba(113,51,59,.15)"><h3 class="head" style="margin:0 0 .5em;font-size:clamp(14px,3.8cqw,18px);letter-spacing:.1em;color:var(--burg)">${d.title}</h3><ul class="tl">${d.items.map(([t, e]) => `<li>${t ? `<span class="t">${t}</span>` : ''}${esc(e)}</li>`).join('')}</ul></div>`;
-    tp.style.opacity = 1;
-  }, reduce ? 0 : 200);
-}
-tp.style.transition = 'opacity .35s';
-tabs.addEventListener('click', (e) => { 
-  const b = e.target.closest('.tab'); 
+/* ----- programme: date boxes that navigate to full pages ----- */
+const dayButtons = $('#dayButtons');
+dayButtons.innerHTML = CFG.days.map((d, i) => `<a href="#day-${i}" class="tab day-box head" style="text-decoration:none;letter-spacing:.06em;font-size:clamp(12px,3.2cqw,15px)">${d.tab}<br><span style="font-weight:600;text-transform:none;letter-spacing:0;color:var(--burg);opacity:.95">${d.date}</span></a>`).join('');
+
+// Populate each day's detail page
+CFG.days.forEach((d, i) => {
+  const container = $(`#day-${i}-content`);
+  if (container) {
+    container.innerHTML = `<h3 class="head" style="margin:0 0 .5em;font-size:clamp(14px,3.8cqw,18px);letter-spacing:.1em;color:var(--burg)">${d.title}</h3><div style="background:rgba(247,240,229,.92);padding:1.2em 1em;border-radius:4px;box-shadow:0 2px 8px rgba(113,51,59,.15)"><ul class="tl">${d.items.map(([t, e]) => `<li>${t ? `<span class="t">${t}</span>` : ''}${esc(e)}</li>`).join('')}</ul></div>`;
+  }
+});
+
+// Add click animation to day boxes
+dayButtons.addEventListener('click', (e) => {
+  const b = e.target.closest('.day-box');
   if (b) {
     // Haptic feedback for mobile devices
     if ('vibrate' in navigator) {
-      navigator.vibrate(10); // Short vibration pulse
+      navigator.vibrate(10);
     }
-    
-    // Click animation - pulse effect
+    // Click animation
     b.classList.remove('click-animate');
-    void b.offsetWidth; // Force reflow to restart animation
+    void b.offsetWidth;
     b.classList.add('click-animate');
     setTimeout(() => b.classList.remove('click-animate'), 400);
-    showDay([...tabs.children].indexOf(b));
   }
 });
-showDay(0);
 
 /* ----- calendar (.ics) ----- */
 $('#calBtn').addEventListener('click', () => {
@@ -83,6 +79,25 @@ function paint() { mbtn.setAttribute('aria-pressed', !muted); mbtn.setAttribute(
 function ramp(to) { clearInterval(fade); fade = setInterval(() => { const v = audio.volume; if (Math.abs(to - v) < .02) { audio.volume = to; clearInterval(fade); if (!to) audio.pause(); } else audio.volume = Math.min(1, Math.max(0, v + Math.sign(to - v) * .02)); }, 80); }
 function startMusic() { if (!musicOK || muted) return; audio.volume = 0; audio.play().then(() => ramp(CFG.volume)).catch(() => {}); }
 mbtn.addEventListener('click', () => { muted = !muted; sessionStorage.setItem('rv-muted', muted ? '1' : '0'); paint(); if (muted) ramp(0); else { audio.play().then(() => ramp(CFG.volume)).catch(() => {}); } });
+
+// Stop music when page/tab is hidden or closed
+document.addEventListener('visibilitychange', () => {
+  if (document.hidden) {
+    // Page is hidden (tab switched or browser minimized)
+    audio.pause();
+  } else {
+    // Page is visible again
+    if (!muted && musicOK) {
+      audio.play().then(() => { if (audio.volume === 0) ramp(CFG.volume); }).catch(() => {});
+    }
+  }
+});
+
+// Stop music when page is about to unload (closed)
+window.addEventListener('beforeunload', () => {
+  audio.pause();
+  audio.currentTime = 0;
+});
 
 /* ----- petals ----- */
 function petals() {
