@@ -61,26 +61,6 @@ tabs.addEventListener('click', (e) => {
 });
 showDay(0);
 
-/* ----- date grid navigation ----- */
-const dateGrid = $('#dateGrid');
-const dateTargets = ['day-tue', 'day-wed', 'day-thu', 'day-fri'];
-dateGrid.innerHTML = CFG.days.map((d, i) => 
-  `<a href="#${dateTargets[i]}" class="date-card" data-day="${i}">
-    <div class="day">${d.tab}</div>
-    <div class="date">${d.date}</div>
-  </a>`
-).join('');
-
-dateGrid.addEventListener('click', (e) => {
-  const card = e.target.closest('.date-card');
-  if (card) {
-    // Haptic feedback
-    if ('vibrate' in navigator) {
-      navigator.vibrate(15);
-    }
-  }
-});
-
 /* ----- calendar (.ics) ----- */
 $('#calBtn').addEventListener('click', () => {
   const c = CFG.cal;

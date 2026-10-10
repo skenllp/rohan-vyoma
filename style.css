@@ -32,12 +32,6 @@ button{font-family:inherit;cursor:pointer}
 .skip{position:absolute;top:max(14px,env(safe-area-inset-top));right:14px;z-index:3;background:rgba(247,240,229,.8);border:1px solid var(--gold);color:var(--burg);padding:.45em 1em;font-size:13px;letter-spacing:.12em;text-transform:uppercase}
 
 /* programme */
-.date-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;max-width:400px;margin:0 auto}
-.date-card{background:rgba(247,240,229,.95);border:2px solid var(--gold);padding:1em;min-height:80px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-decoration:none;color:var(--burg);transition:all .3s;box-shadow:0 2px 6px rgba(113,51,59,.15);cursor:pointer;-webkit-tap-highlight-color:transparent}
-.date-card:hover{background:rgba(232,197,186,.85);border-color:var(--burg);transform:translateY(-3px);box-shadow:0 4px 10px rgba(113,51,59,.25)}
-.date-card:active{transform:scale(.95);transition:transform .1s}
-.date-card .day{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:clamp(14px,3.8cqw,18px);letter-spacing:.08em;text-transform:uppercase;margin-bottom:.2em}
-.date-card .date{font-family:'EB Garamond',serif;font-weight:600;font-size:clamp(16px,4.2cqw,20px);color:var(--burg);opacity:.95}
 .tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;position:relative}
 .tabs::before{content:'👆 Tap to view';position:absolute;top:-1.8em;left:50%;transform:translateX(-50%);font-size:clamp(11px,2.8cqw,13px);color:var(--gold);font-family:'EB Garamond',serif;font-style:italic;letter-spacing:.05em;opacity:0;animation:tapHint 3s ease-in-out 1s;pointer-events:none}
 @keyframes tapHint{0%,100%{opacity:0}15%,85%{opacity:.8}}
