@@ -1,7 +1,7 @@
 /* ===== Central editable configuration ===== */
 const CFG = {
   kicker: 'A Celebration of Love & Togetherness', groom: 'C Rohan Nair', bride: 'Vyoma Mehta',
-  hero: [['26 January 2027', 'Wedding, Mumbai'], ['28–31 January 2027', 'Celebrations, Calicut']],
+  hero: [['26 January 2027', 'Wedding, Mumbai'], ['27–30 January 2027', 'Celebrations, Calicut']],
   host: 'M Pramila Nair', pre: 'has the pleasure of informing you of the marriage of her beloved grandson',
   aGroom: 'C Rohan Nair', aBride: 'Vyoma Mehta', aDate: 'Tuesday, 26 January 2027', aPlace: 'Mumbai',
   post: 'and seeks your prayers, best wishes and blessings for the couple.',
@@ -11,10 +11,10 @@ const CFG = {
           stay: 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent('Hotel Tiara, Calicut') },
   cal: { start: '20270130T180000', end: '20270130T220000', tz: 'Asia/Kolkata', venue: 'K-Hills, Calicut' },
   days: [
-    { tab: 'Thu', date: '28 Jan', title: 'Thursday, 28 January 2027', items: [['PM', 'Guests arrive at Hotel Tiara, Calicut'], ['', 'Check-in as per rooming plan'], ['', 'Quiet dinner at the hotel']] },
-    { tab: 'Fri', date: '29 Jan', title: 'Friday, 29 January 2027', items: [['06:30 – 07:30 AM', 'Breakfast at the hotel'], ['08:30 AM – 12:00 Noon', 'Heritage Visit to places of historical and cultural interest in Calicut'], ['12:00 – 12:45 PM', 'Return to hotel, freshen up and change'], ['01:00 – 02:30 PM', 'Traditional Kerala Feast'], ['03:00 – 08:00 PM', 'Executive Time'], ['08:00 – 10:00 PM', 'Dinner at the hotel']] },
-    { tab: 'Sat', date: '30 Jan', title: 'Saturday, 30 January 2027', items: [['08:30 – 10:00 AM', 'Breakfast at the hotel'], ['10:00 AM – 12:30 PM', 'Shopping'], ['01:00 – 02:00 PM', 'Lunch at the hotel'], ['02:00 – 05:00 PM', 'Executive Time'], ['05:30 PM', 'Depart for K-Hills'], ['06:00 – 10:00 PM', 'Wedding Reception & Dinner'], ['11:00 PM', 'Return to hotel']] },
-    { tab: 'Sun', date: '31 Jan', title: 'Sunday, 31 January 2027', items: [['Morning', 'Depart as convenient. Breakfast and lunch at Hotel']] },
+    { tab: 'Tue', date: '27 Jan', title: 'Tuesday, 27 January 2027', items: [['PM', 'Guests arrive at Hotel Tiara, Calicut'], ['', 'Check-in as per rooming plan'], ['', 'Quiet dinner at the hotel']] },
+    { tab: 'Wed', date: '28 Jan', title: 'Wednesday, 28 January 2027', items: [['06:30 – 07:30 AM', 'Breakfast at the hotel'], ['Morning', 'Leisure time at the hotel'], ['01:00 – 02:00 PM', 'Lunch at the hotel'], ['03:00 – 07:00 PM', 'Executive Time'], ['08:00 – 10:00 PM', 'Dinner at the hotel']] },
+    { tab: 'Thu', date: '29 Jan', title: 'Thursday, 29 January 2027', items: [['06:30 – 07:30 AM', 'Breakfast at the hotel'], ['08:30 AM – 12:00 Noon', 'Heritage Visit to places of historical and cultural interest in Calicut'], ['12:00 – 12:45 PM', 'Return to hotel, freshen up and change'], ['01:00 – 02:30 PM', 'Traditional Kerala Feast'], ['03:00 – 08:00 PM', 'Executive Time'], ['08:00 – 10:00 PM', 'Dinner at the hotel']] },
+    { tab: 'Fri', date: '30 Jan', title: 'Friday, 30 January 2027', items: [['08:30 – 10:00 AM', 'Breakfast at the hotel'], ['10:00 AM – 12:30 PM', 'Shopping'], ['01:00 – 02:00 PM', 'Lunch at the hotel'], ['02:00 – 05:00 PM', 'Executive Time'], ['05:30 PM', 'Depart for K-Hills'], ['06:00 – 10:00 PM', 'Wedding Reception & Dinner'], ['11:00 PM', 'Return to hotel']] },
   ],
   family: [['RAdm M D Suresh (Retd)', 'Preetha Chengalath', 'Kairali Suresh'], ['M D Ramesh', 'Reina Mary Ramesh', 'Neha Eva Ramesh', 'Nithya Elsa Ramesh'], ['C Rahul Nair', 'Niveditha Nair', 'Adithya Nair'], ['Rohit Chengalath', 'Radhika Rohit', 'Raghav Menon']],
 };
@@ -60,6 +60,26 @@ tabs.addEventListener('click', (e) => {
   }
 });
 showDay(0);
+
+/* ----- date grid navigation ----- */
+const dateGrid = $('#dateGrid');
+const dateTargets = ['day-tue', 'day-wed', 'day-thu', 'day-fri'];
+dateGrid.innerHTML = CFG.days.map((d, i) => 
+  `<a href="#${dateTargets[i]}" class="date-card" data-day="${i}">
+    <div class="day">${d.tab}</div>
+    <div class="date">${d.date}</div>
+  </a>`
+).join('');
+
+dateGrid.addEventListener('click', (e) => {
+  const card = e.target.closest('.date-card');
+  if (card) {
+    // Haptic feedback
+    if ('vibrate' in navigator) {
+      navigator.vibrate(15);
+    }
+  }
+});
 
 /* ----- calendar (.ics) ----- */
 $('#calBtn').addEventListener('click', () => {
