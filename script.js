@@ -78,7 +78,7 @@ fetch(CFG.music, { method: 'HEAD' }).then((r) => { musicOK = r.ok && (r.headers.
 function paint() { mbtn.setAttribute('aria-pressed', !muted); mbtn.setAttribute('aria-label', muted ? 'Unmute music' : 'Mute music'); $('#slash').hidden = !muted; }
 function ramp(to) { clearInterval(fade); fade = setInterval(() => { const v = audio.volume; if (Math.abs(to - v) < .02) { audio.volume = to; clearInterval(fade); if (!to) audio.pause(); } else audio.volume = Math.min(1, Math.max(0, v + Math.sign(to - v) * .02)); }, 80); }
 function startMusic() { if (!musicOK || muted) return; audio.volume = 0; audio.play().then(() => ramp(CFG.volume)).catch(() => {}); }
-mbtn.addEventListener('click', () => { muted = !muted; sessionStorage.setItem('rv-muted', muted ? '1' : '0'); paint(); if (muted) ramp(0); else { audio.play().then(() => ramp(CFG.volume)).catch(() => {}); } });
+mbtn.addEventListener('click', () => { muted = !muted; sessionStorage.setItem('rv-muted', muted ? '1' : '0'); paint(); if (muted) { clearInterval(fade); audio.pause(); audio.volume = 0; } else { audio.volume = 0; audio.play().then(() => ramp(CFG.volume)).catch(() => {}); } });
 
 // Stop music when page/tab is hidden or closed
 document.addEventListener('visibilitychange', () => {
