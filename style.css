@@ -59,7 +59,8 @@ button{font-family:inherit;cursor:pointer}
 .petal{position:absolute;top:-6vh;width:11px;height:14px;border-radius:70% 0 70% 0;background:var(--blush);opacity:.7;animation:fall linear infinite}
 @keyframes fall{to{transform:translate3d(var(--dx),112vh,0) rotate(540deg)}}
 .music{position:fixed;right:max(14px,env(safe-area-inset-right));bottom:max(14px,env(safe-area-inset-bottom));z-index:40;width:48px;height:48px;border-radius:50%;border:1px solid var(--gold);background:rgba(247,240,229,.92);color:var(--burg);display:grid;place-items:center;box-shadow:0 2px 10px rgba(113,51,59,.2)}
-.mono{width:clamp(80px,26cqw,118px);height:clamp(80px,26cqw,118px);border:1px solid var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:.8em auto 0;color:var(--gold);font-size:clamp(22px,7cqw,34px);line-height:1;padding:0 0 .35em 0;box-sizing:border-box}
+.mono{width:clamp(64px,18cqw,88px);height:clamp(64px,18cqw,88px);border:1px solid var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:.8em auto 0;color:var(--gold);font-size:clamp(20px,6cqw,30px);box-sizing:border-box}
+.mono span{display:block;line-height:1;margin-top:.2em}
 @media (prefers-reduced-motion:reduce){.petals{display:none}html{scroll-behavior:auto}*{transition-duration:.01ms!important}}
 .panel>.in{padding:var(--pad)}
 .panel::before{content:"";position:absolute;inset:0;background:var(--veil,none)}
